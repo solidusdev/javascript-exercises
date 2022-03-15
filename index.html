@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>closures</title>
+</head>
+
+<body>
+    <h1>closures</h1>
+    <p>the button has been clicked <span id="view">0</span> times! </p>
+    <button onclick="start_counter();">click</button>
+</body>
+
+<script>
+
+    const outter_function = () => {
+
+        let count = 0;
+
+        function inner_function() {
+            count += 1;
+            document.getElementById("view").innerHTML = count;
+            return count;
+        }
+
+        return inner_function;
+    };
+
+    let start_counter = outter_function();  // important
+
+</script>
+
+</html>

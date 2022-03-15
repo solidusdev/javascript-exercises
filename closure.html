@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Closure</title>
+</head>
+
+<body>
+    <h1>Closures with Button</h1>
+    <p id="view">0</p>
+    <button id="button" onclick="view_button_value()">click</button>
+</body>
+
+<script>
+    const increment_button_value = (() => {
+        
+        /*
+            This "counter" variable now becomes private and
+            is no longer accessible. To modify this number
+            value, you must return a function that modifies
+            the counter value. 
+        */
+        let counter = 0;
+
+        // this acts like a modifier function that returns some number
+        return () => {
+            counter += 1;
+            return counter;
+        }
+    })();
+
+    /* 
+        Here, when we invoke the function "increment_button_value()", we are only
+        invoking the nested function which returns some number that gets displayed 
+        to the <p> element's innerHTML node.
+    */
+    const view_button_value = () => {
+        document.getElementById("view").innerHTML = increment_button_value();
+    }
+</script>
+
+</html> 
